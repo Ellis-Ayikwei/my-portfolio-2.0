@@ -1,9 +1,14 @@
 'use client';
 
-import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGithub, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
+import { useRef, useState } from 'react';
 import image4 from '../../assets/ellis1.jpg';
+import './jh.css';
 
 const navigation = [
     { name: 'Product', href: '#' },
@@ -15,68 +20,106 @@ const navigation = [
 export default function Hero() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    const boxRef = useRef<HTMLDivElement | null>(null);
+    const nameRef = useRef<HTMLParagraphElement | null>(null);
+    const bgRef = useRef<HTMLDivElement | null>(null);
+
+    gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+        gsap.to(nameRef.current, {
+            text: 'Ellis Armah Ayikwei',
+            duration: 5,
+        });
+
+        gsap.to(boxRef.current, {
+            rotation: 360,
+            duration: 10,
+            ease: 'power2.inOut',
+            repeat: -1,
+            yoyo: true,
+            scrollTrigger: {
+                trigger: '.hero',
+                scrub: true,
+            },
+        });
+
+        gsap.to(bgRef.current, {
+            backgroundPosition: '100% 100%',
+            duration: 10,
+            ease: 'power2.inOut',
+            repeat: -1,
+            yoyo: true,
+            scrollTrigger: {
+                trigger: '.box',
+                scrub: true,
+            },
+        });
+
+        gsap.from('.hero-content', {
+            y: 50,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.out',
+            stagger: 0.3,
+            scrollTrigger: {
+                trigger: '.hero-content',
+                start: 'top 80%',
+            },
+        });
+    });
+
     return (
-        // <div className="bg-gradient-to-r from-[#dc711a] via-[#e1c259] to-[#dc711a]">
-        <div className="bg-[#dc711a]">
-            <div className="relative px-6 pt-14 lg:px-8 mt-10 grid grid-cols-1 lg:grid-cols-3 opacity-90 items-center text-white">
-                <div className="md:col-span-2 lg:col-span-1 items-center justify-center text-white">
-                    <h1 className="text-balance text-6xl items-center justify-center font-bold tracking-tight text-white sm:text-6xl">
-                        Hi,<br/>
-                        <br className="block md:hidden shadow-lg" /> My Name Is <br /> Ellis Armah Ayikwei <br className="hidden md:block " />
-                    </h1>
-                    <div className="mt-6">
-                        <a
-                            href="#"
-                            className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-                        >
-                            Explore My Story
-                        </a>
-                    </div>
+        <div
+            className="hero bg-[#dc711a] bg-gradient-to-r from-[#ffa34d] through-[#ff4d4d] to-[#ff4d4d] gap-3 bg-blend-darken h-screen flex justify-center items-center flex-col p-5  bg-cover bg-center bg-no-repeat bg-fixed"
+            style={{ backgroundImage: `url()` }}
+        >
+            <div className="flex gap-3 mr-auto ml-auto mt-6 lg:mt-0">
+                <div className="flex items-center p-2 px-4 rounded-full bg-white hover:bg-gray-300 text-purple-700 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"> About</div>
+                <div className="flex items-center p-2 px-4 rounded-full bg-white hover:bg-gray-300 text-purple-700 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"> Projects</div>
+                <div className="flex items-center p-2 px-4 rounded-full bg-white hover:bg-gray-300 text-purple-700 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"> Experience</div>
+            </div>
+            {/* Main Content */}
+            <div className="grid lg:grid-cols-3 grid-cols-1 items-center text-center lg:text-left hero-content gap-8 h-auto text-white">
+                {/* Left Section */}
+                <div>
+                    <p className="text-4xl lg:text-6xl font-bold">Hi,</p>
+                    <p className="text-3xl lg:text-5xl font-semibold">My Name Is</p>
+                    <p ref={nameRef} className="text-4xl lg:text-6xl font-extrabold bg-clip-text mb-4"></p>
+                    <a href="#" className="mt-10 px-6 py-3 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-900 hover:scale-105 transition duration-300 shadow-lg">
+                        Explore My Story
+                    </a>
                 </div>
-                <div className="flex flex-wrap flex-shrink-0 lg:flex-nowrap items-center justify-center md:col-span-1 lg:col-span-1">
-                    <img src={image4} alt="Hero3" className="w-auto w-full h-auto  rounded-lg border-4 border-white" />
+
+                {/* Middle Section (Image) */}
+                <div className="flex justify-center hero-content">
+                    <img src={image4} alt="Ellis Armah Ayikwei" className="rounded-lg border-4 border-white shadow-lg h-fit" />
                 </div>
-                <div className="md:col-span-2 lg:col-span-1 items-end justify-end mt-auto mb-0">
-                    <h1 className="text-balance text-6xl items-center justify-center font-bold tracking-tight text-white sm:text-6xl">I am a Software Engineer & a Professional IT Support</h1>
-                    <div className="flex gap-6">
-                        <div className="mt-6">
-                            <a
-                                href="#"
-                                className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-                            >
-                                Lets Work Together
+
+                {/* Right Section */}
+                <div>
+                    <p className="text-2xl lg:text-4xl font-semibold">I am a</p>
+                    <p className="text-3xl lg:text-5xl font-bold">Software Engineer</p>
+                    <p className="text-xl lg:text-2xl">and a Professional IT Support</p>
+                    <div className="mt-6 flex gap-4 justify-center lg:justify-start">
+                        {['Let’s Work Together', 'View My Resume'].map((btnText, idx) => (
+                            <a key={idx} href="#" className="px-5 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 hover:scale-105 transition duration-300 shadow-lg">
+                                {btnText}
                             </a>
-                        </div>
-                        <div className="mt-6">
-                            <a
-                                href="#"
-                                className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-                            >
-                               View My Resume
-                            </a>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-                <div className="team-icon flex items-center justify-center space-x-4">
-                    <a className="bg-white hover:bg-gray-300 text-purple-700 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md
-" href="">
-                        <FontAwesomeIcon icon={faFacebookF} />
+
+            <div ref={boxRef} className="box"></div>
+
+            <div className="flex gap-4 hero-content">
+                {[faFacebookF, faTwitter, faLinkedin, faInstagram, faGithub].map((icon, idx) => (
+                    <a key={idx} href="#" className="w-12 h-12 bg-white text-purple-800 rounded-full flex items-center justify-center hover:scale-125 transition-all duration-300 shadow-lg">
+                        <FontAwesomeIcon icon={icon} />
                     </a>
-                    <a className="bg-white hover:bg-gray-300 text-blue-500 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md
-" href="">
-                        <FontAwesomeIcon icon={faTwitter} />
-                    </a>
-                    <a className="bg-white hover:bg-gray-300 text-blue-700 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md
-" href="">
-                        <FontAwesomeIcon icon={faLinkedin} />
-                    </a>
-                    <a className="bg-white hover:bg-gray-300 text-pink-500 font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md
-" href="">
-                        <FontAwesomeIcon icon={faInstagram} />
-                    </a>
-                </div>
+                ))}
             </div>
         </div>
     );
