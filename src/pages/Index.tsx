@@ -1,18 +1,13 @@
-import Header from "../components/Layouts/Header";
-import Hero from "../components/Layouts/Hero";
-import Portfolio from "../components/Layouts/myPortfolio";
-import ExperienceTimeline  from "../components/Layouts/experince";
-import ExploreMyStory from "../components/Layouts/mystroy";
+import Hero from '../components/Layouts/Hero';
 
 const Index = () => {
-
     return (
         <div>
             <Hero />
-
+            {/* 
             <ExploreMyStory />
             <ExperienceTimeline />
-            <Portfolio />
+            <Portfolio /> */}
         </div>
     );
 };

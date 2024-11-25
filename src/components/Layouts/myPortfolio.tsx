@@ -62,7 +62,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div id="portfolio" className="bg-gray-100 py-16 px-6 sm:px-12 lg:px-24">
+    <div id="portfolio" className="bg-transparent py-16 px-6 sm:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-800 text-center">
           My Portfolio
@@ -113,3 +113,5 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
+
