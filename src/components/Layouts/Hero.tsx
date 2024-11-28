@@ -6,8 +6,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
-import { useRef, useState } from 'react';
-import image4 from '../../assets/ellis1.jpg';
+import { useRef } from 'react';
 import './jh.css';
 
 const navigation = [
@@ -18,7 +17,6 @@ const navigation = [
 ];
 
 export default function Hero() {
-
     const boxRef = useRef<HTMLDivElement | null>(null);
     const nameRef = useRef<HTMLParagraphElement | null>(null);
     const bgRef = useRef<HTMLDivElement | null>(null);
@@ -69,7 +67,6 @@ export default function Hero() {
         });
     });
 
-
     const socialMedia = [
         { icon: faFacebookF, href: 'https://web.facebook.com/ellis.hero/' },
         { icon: faGithub, href: 'https://github.com/Ellis-Ayikwei' },
@@ -78,115 +75,80 @@ export default function Hero() {
         { icon: faTwitter, href: 'https://x.com/home' },
     ];
 
-   
-
     return (
-        <div className="hero !h-screen w-full flex flex-col justify-center items-center p-5">
-            {/* Main Content */}
-            {/* <div className="flex flex-row justify-between items-center w-full !mt-0 mb-auto">
-                <div className="flex justify-start mr-auto ml-0 items-center gap-4 rounded-full ring-2 ring-[#dc711a9f] border-2 border-[#dc711a] bg-none text-xl ">
-                    <button
-                        className="flex items-center p-2 px-4 rounded-ful text-[#dc711a] font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"
-                        onClick={() => (window.location.href = '#projects')}
-                    >
-                        EA<sup>2</sup>
-                    </button>
+        <div className="hero w-full flex flex-col items-center justify-center h-auto mt-20">
+            {/* Hero Content */}
+            <div className="text-center text-white">
+                {/* Name Section */}
+                <div className="mb-6">
+                    <p className="text-4xl lg:text-5xl font-bold">Hi,</p>
+                    <p className="text-3xl lg:text-4xl font-semibold">My Name Is</p>
+                    <p ref={nameRef} className="text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-yellow-500 animate-pulse">
+                        Your Name
+                    </p>
                 </div>
-                <div className="flex justify-center items-center gap-4 rounded-full ring-2 ring-[#dc711a9f] border-2 border-[#dc711a] bg-none text-xl mr-auto">
-                    <button
-                        className="flex items-center p-2 px-4 rounded-ful text-[#dc711a] font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"
-                        onClick={() => (window.location.href = '#projects')}
-                    >
-                        About Me
-                    </button>
-                    <button
-                        className="flex items-center p-2 px-4 rounded-ful text-[#dc711a] font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"
-                        onClick={() => (window.location.href = '#projects')}
-                    >
-                        Projects
-                    </button>
-                    <button
-                        className="flex items-center p-2 px-4 rounded-ful text-[#dc711a] font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"
-                        onClick={() => (window.location.href = '#experience')}
-                    >
-                        Experience
-                    </button>
-                    <button
-                        className="flex items-center p-2 px-4 rounded-ful text-[#dc711a] font-bold py-2 px-4 rounded-full hover:scale-110 hover:shadow-md"
-                        onClick={() => (window.location.href = '#experience')}
-                    >
-                        Contact Me
-                    </button>
-                </div>
-            </div> */}
-            <div className="grid lg:grid-cols-3 grid-cols-1 items-center text-center lg:text-left hero-content gap-8 h-auto text-white">
-                {/* Left Section */}
-                <div>
-                    <p className="text-4xl font-bold">Hi,</p>
-                    <p className="text-3xl  font-semibold">My Name Is</p>
-                    <p ref={nameRef} className="text-5xl font-extrabold bg-clip-text mb-4"></p>
 
-                    <a href="#" className="mt-10 px-6 py-3 bg-[#dc711a] text-white font-semibold rounded-lg hover:bg-purple-900 hover:scale-105 transition duration-300 shadow-lg">
-                        Explore My Story
+                {/* What I Do Section */}
+                <div className="mt-4">
+                    <p className="text-2xl lg:text-3xl font-semibold">I am a</p>
+                    <p className="text-3xl lg:text-4xl font-bold">Software Engineer</p>
+                    <p className="text-lg lg:text-xl font-medium text-gray-300">and a Professional IT Support</p>
+                </div>
+
+                {/* Call to Action */}
+                <div className="mt-8 flex gap-4 justify-center">
+                    <a href="/contactme" className="px-5 py-3 bg-gradient-to-r from-orange-400 to-yellow-500 text-white rounded-lg hover:scale-105 transition duration-300 shadow-lg">
+                        Let’s Work Together
+                    </a>
+                    <a href="#" className="px-5 py-3 bg-gradient-to-r from-orange-400 to-yellow-500 text-white rounded-lg hover:scale-105 transition duration-300 shadow-lg">
+                        View My Resume
                     </a>
                 </div>
-
-                {/* Middle Section (Image) */}
-                <div className="flex justify-center hero-content">
-                    <img src={image4} alt="Ellis Armah Ayikwei" className="rounded-lg border-4 border-white shadow-lg h-fit" />
-                </div>
-
-                {/* Right Section */}
-                <div>
-                    <p className="text-2xl lg:text-4xl font-semibold">I am a</p>
-                    <p className="text-3xl lg:text-5xl font-bold">Software Engineer</p>
-                    <p className="text-xl lg:text-2xl">and a Professional IT Support</p>
-                    <div className="mt-10 lg:mt-0">
-                        <div className="flex flex-wrap gap-4 mt-6">
-                            {[
-                                'HTML/CSS/JavaScript',
-                                'Python/Flask/Django',
-                                'Typescript',
-                                'Flutter',
-                                'PHP',
-                                'Node.js',
-                                'React.js',
-                                'Adobe Photoshop',
-                                'Adobe XD',
-                                'MongoDB',
-                                'Mysql',
-                                'AWS',
-                                'Docker',
-                                'firebase',
-                                'Git',
-                                'Linux',
-                                'kubernetes',
-                            ].map((badgeText, idx) => (
-                                <span key={idx} className="px-4 py-2 rounded-full ring-2 ring-[#dc711a9f] border-2 border-[#dc711a] bg-none text-white text-sm font-semibold">
-                                    {badgeText}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="mt-6 flex gap-4 justify-center lg:justify-start">
-                        {['Let’s Work Together', 'View My Resume'].map((btnText, idx) => (
-                            <a key={idx} href="#" className="px-5 py-3 bg-[#dc711a] text-white rounded-lg hover:bg-[#dc711a] hover:scale-105 transition duration-300 shadow-lg">
-                                {btnText}
-                            </a>
-                        ))}
-                    </div>
-                </div>
             </div>
-
-            {/* <div ref={boxRef} className="box"></div> */}
-
-            <div className="flex gap-4 hero-content">
+            {/* Social Media Icons */}
+            <div className="flex gap-4 mt-8 justify-center">
                 {socialMedia.map(({ icon, href }, idx) => (
-                    <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white text-[#dc711a] rounded-full flex items-center justify-center hover:scale-125 transition-all duration-300 shadow-lg">
+                    <a
+                        key={idx}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-white text-[#dc711a] rounded-full flex items-center justify-center hover:scale-125 hover:shadow-xl transition-all duration-300"
+                    >
                         <FontAwesomeIcon icon={icon} />
                     </a>
                 ))}
             </div>
+
+            {/* Skills Footer */}
+            {/* <div className="flex flex-wrap justify-center gap-3 mt-8">
+                    {[
+                        'HTML/CSS/JavaScript',
+                        'Python/Flask/Django',
+                        'Typescript',
+                        'Flutter',
+                        'PHP',
+                        'Node.js',
+                        'React.js',
+                        'Adobe Photoshop',
+                        'Adobe XD',
+                        'MongoDB',
+                        'Mysql',
+                        'AWS',
+                        'Docker',
+                        'Firebase',
+                        'Git',
+                        'Linux',
+                        'Kubernetes',
+                    ].map((badgeText, idx) => (
+                        <span
+                            key={idx}
+                            className="px-4 py-1 rounded-full ring-2 ring-[#dc711a9f] border-2 border-[#dc711a] bg-white text-[#000000] text-sm font-semibold hover:bg-[#dc711a] hover:text-white transition duration-300"
+                        >
+                            {badgeText}
+                        </span>
+                    ))}
+                </div> */}
         </div>
     );
 }
