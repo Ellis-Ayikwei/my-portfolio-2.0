@@ -6,6 +6,7 @@ import { toggleAnimation, toggleLayout, toggleLocale, toggleMenu, toggleNavbar, 
 
 import { loadSlim } from '@tsparticles/slim'; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 import { useMemo } from 'react';
+import { Container } from '@tsparticles/engine';
 
 function App({ children }: PropsWithChildren) {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);

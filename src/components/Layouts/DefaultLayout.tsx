@@ -1,13 +1,11 @@
 import { PropsWithChildren, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import App from '../../App';
+import Portals from '../../components/Portals';
 import { IRootState } from '../../store';
 import { toggleSidebar } from '../../store/themeConfigSlice';
 import Footer from './Footer';
-import Header from './Header';
-import Setting from './Setting';
 import Sidebar from './Sidebar';
-import Portals from '../../components/Portals';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
@@ -84,10 +82,6 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
                     {/* END SIDEBAR */}
 
                     <div className="main-content flex flex-col min-h-screen">
-                        {/* BEGIN TOP NAVBAR */}
-                        <Header />
-                        {/* END TOP NAVBAR */}
-
                         {/* BEGIN CONTENT AREA */}
                         <Suspense>
                             <div className={`${themeConfig.animation} p-6 animate__animated`}>{children}</div>
