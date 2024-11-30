@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import store, { IRootState } from './store';
 import { toggleAnimation, toggleLayout, toggleLocale, toggleMenu, toggleNavbar, toggleRTL, toggleSemidark, toggleTheme } from './store/themeConfigSlice';
 
+import { Container } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim'; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 import { useMemo } from 'react';
-import { Container } from '@tsparticles/engine';
 
 function App({ children }: PropsWithChildren) {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
@@ -90,14 +90,14 @@ function App({ children }: PropsWithChildren) {
                         default: 'bounce' as const,
                     },
                     random: true,
-                    speed: 6,
+                    speed: 5,
                     straight: false,
                 },
                 number: {
                     density: {
                         enable: true,
                     },
-                    value: 200,
+                    value: 250,
                 },
                 opacity: {
                     value: 0.2,

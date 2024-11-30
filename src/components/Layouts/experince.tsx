@@ -1,7 +1,35 @@
 import React from 'react';
 
 const ExperienceTimeline: React.FC = () => {
-    const experiences = [
+    let experiences = [
+        {
+            id: 6,
+            bgColor: 'bg-dark',
+            textColor: 'text-black',
+            title: 'Software Engineer',
+            imgSrc: '/assets/images/carousel1.jpeg',
+            btnClass: 'btn-dark',
+            description:
+                'Developed a full-stack application using React, TypeScript, and Python Flask, implementing robust backend APIs and responsive frontend architecture. Designed and implemented RESTful API endpoints with Flask, focusing on efficient data handling and secure authentication mechanisms. Created modular React components with TypeScript, ensuring type safety and improving overall code reliability. Integrated state management solutions to optimize application performance and user experience. Implemented comprehensive error handling and validation across frontend and backend systems. Developed scalable database interactions using SQLAlchemy ORM with MySql. Utilized Docker for containerization and streamlined deployment processes. Implemented CI/CD pipelines to automate testing and deployment workflows. Applied modern web development best practices, including responsive design and performance optimization techniques',
+            company: 'Enterprise Group Ghana',
+            location: 'Accra, Ghana',
+            date: 'Sep 2024 – Nov 2024',
+            skills: ['React', 'TypeScript', 'Python', 'Flask', 'SQLAlchemy', 'MySql', 'Docker', 'CI/CD', 'Responsive Design', 'Performance Optimization'],
+        },
+        {
+            id: 7,
+            bgColor: 'bg-black',
+            textColor: 'text-dark',
+            title: 'Software Engineer',
+            imgSrc: '/assets/images/menu-heade.jpg',
+            btnClass: 'btn-light',
+            description:
+                'Developed a full Shopify e-commerce store using Liquid, HTML, CSS, and JavaScript. Designed and implemented custom theme modifications and advanced product filtering. Configured Shopify apps to enhance store functionality. Optimized website performance and ensured cross-device compatibility. Delivered a responsive and user-friendly design for Mira Drinks product line',
+            company: 'Mira Drinks',
+            location: 'Manchester, Uk',
+            date: 'April 2024 – July 2024',
+            skills: ['Liquid', 'HTML', 'CSS', 'JavaScript', 'Shopify', 'Theme Modifications', 'Product Filtering', 'Performance Optimization'],
+        },
         {
             id: 1,
             bgColor: 'bg-info',
@@ -96,15 +124,16 @@ const ExperienceTimeline: React.FC = () => {
             skills: ['Active Directory', 'Desktop/Network Support', 'Technical Support', 'Virtual Machines', 'VPN', 'SSH/TCP/IP'],
         },
     ];
+    experiences = experiences.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center backdrop-blur-sm">
             <div className="flex items-center justify-between mb-5">
                 <h2 className="font-semibold text-4xl text-white dark:text-white-light">My Experience</h2>
             </div>
             <div className="mb-5 inline-block w-full">
                 <ul className="relative py-12 before:absolute before:bg-[#ebedf2] dark:before:bg-[#191e3a] before:bottom-0 before:left-1/2 before:top-0 before:w-[3px] before:-ml-[1.5px] max-w-[900px] mx-auto table">
-                    {experiences.map((exp, index) => (
+                    {experiences.reverse().map((exp, index) => (
                         <li key={exp.id} className="relative mb-12 before:clear-both before:table after:clear-both after:table">
                             <div className={`hidden sm:block absolute ${exp.bgColor} border-[3px] border-[#ebedf2] dark:border-[#191e3a] w-5 h-5 rounded-full left-1/2 top-[32px] -ml-2.5 z-[1]`}></div>
                             <div
