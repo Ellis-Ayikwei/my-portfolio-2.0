@@ -100,7 +100,7 @@ export default function Hero() {
                     <a href="/contactme" className="px-5 py-3 bg-gradient-to-r from-orange-400 to-yellow-500 text-white rounded-lg hover:scale-105 transition duration-300 shadow-lg">
                         Let’s Work Together
                     </a>
-                    <a href="#" className="px-5 py-3 bg-gradient-to-r from-orange-400 to-yellow-500 text-white rounded-lg hover:scale-105 transition duration-300 shadow-lg">
+                    <a href="https://drive.google.com/file/d/1Zc226Z8dgM7yzEtf7j4cluNRl_GytL8y/view?usp=drivesdk" className="px-5 py-3 bg-gradient-to-r from-orange-400 to-yellow-500 text-white rounded-lg hover:scale-105 transition duration-300 shadow-lg">
                         View My Resume
                     </a>
                 </div>
